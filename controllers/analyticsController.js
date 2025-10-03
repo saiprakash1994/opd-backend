@@ -107,6 +107,8 @@ exports.analytics = async (req, res) => {
             repeatVsNew: { repeatVisits, newVisits },
             todayStats: { total: todayTotal, new: todayNew },
             monthStats: { total: monthTotal, new: monthNew },
+            totalPatients: uniquePatientsCount,
+
         });
     } catch (err) {
         console.error("analytics error:", err);

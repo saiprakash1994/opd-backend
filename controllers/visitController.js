@@ -30,7 +30,8 @@ exports.addVisit = async (req, res) => {
             const continued = p.toBeContinued === true || p.toBeContinued === "true";
 
             // 1. prefer uploaded file
-            let photo = req.files?.[i] ? `/uploads/${req.files[i].filename}` : null;
+            // let photo = req.files?.[i] ? `/uploads/${req.files[i].filename}` : null;
+            let photo = req.files?.[i] ? req.files[i].path : null;
 
             // 2. else, use photo sent from frontend
             if (!photo && p.photo) {
@@ -128,7 +129,8 @@ exports.updateVisit = async (req, res) => {
 
             const updatedPrescriptions = parsedPrescriptions.map((p, i) => {
                 const continued = p.toBeContinued === true || p.toBeContinued === "true";
-                let photo = req.files?.[i] ? `/uploads/${req.files[i].filename}` : null;
+                // let photo = req.files?.[i] ? `/uploads/${req.files[i].filename}` : null;
+                let photo = req.files?.[i] ? req.files[i].path : null;
                 let inherited = false;
 
                 if (continued && !photo && lastVisit.prescriptions?.length) {
