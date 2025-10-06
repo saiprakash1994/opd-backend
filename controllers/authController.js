@@ -38,7 +38,7 @@ exports.login = async (req, res) => {
             message: "Login successful",
             accessToken,
             refreshToken,
-            doctor: { id: doctor._id, name: doctor.name, email: doctor.email }
+            doctor: doctor.name
         });
     } catch (err) {
         res.status(500).json({ message: "Server error", error: err.message });
