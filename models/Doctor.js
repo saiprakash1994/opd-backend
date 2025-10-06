@@ -4,7 +4,7 @@ const doctorSchema = new mongoose.Schema({
     name: String,
     email: { type: String, unique: true },
     password: String,
-    refreshTokens: [{ token: String, createdAt: { type: Date, default: Date.now } }],
+    refreshTokens: [{ token: String }],
 });
 
 module.exports = mongoose.model("Doctor", doctorSchema);
