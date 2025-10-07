@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
         const isMatch = await bcrypt.compare(password, doctor.password);
         if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-        const accessToken = jwt.sign({ id: doctor._id }, jwtSecret, { expiresIn: "15m" });
+        const accessToken = jwt.sign({ id: doctor._id }, jwtSecret, { expiresIn: "1d" });
         const refreshToken = jwt.sign({ id: doctor._id }, refreshSecret, { expiresIn: "7d" });
 
         await Doctor.updateOne(
